@@ -6,9 +6,6 @@ class Page{
         this.x = +localStorage.getItem("x")||0;
         this.o = +localStorage.getItem("o")||0;
         this.tie = +localStorage.getItem("tie")||0;
-        if(board.winner().winner){
-            board.reset();
-        }
         this.load();
     }
     save(){
@@ -18,6 +15,9 @@ class Page{
         localStorage.setItem("bot", +this.bot+"");
     }
     load(){
+        if(/[xo ]/.test(board.winner().winner)){
+            this.end()
+        };
         if(localStorage.getItem("x")){
             this.x = +localStorage.getItem("x")
             document.querySelector("#x-wincount-text").innerHTML=this.x;
@@ -38,16 +38,13 @@ class Page{
         if(!board.winner().winner){
             document.querySelector("#game-end").classList.remove("shown");
         }
-        if(/[xo ]/.test(board.winner().winner))this.end();
     }
     end(){
+        if(board.winner().winner==undefined)throw new Error("No winner");
         gameEndText.innerHTML=board.winner().winner==" "?"NO WINNER":board.winner().winner.toUpperCase()+" WON"
         for(var i of board.winner().arr){
             $(`#cell${i}`)[0].classList.add("winning-tile");
         }
-        board.board.forEach((value,index)=>{
-            $(`#cell${index}`)[0].classList.add("disabled");
-        })
         if(board.winner().winner == "x")page.x++;
         else if(board.winner().winner == "o")page.o++;
         else page.tie++

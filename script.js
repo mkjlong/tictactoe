@@ -5,25 +5,24 @@ const board = new Board();
 const page = new Page();
 
 
-const depth = 9;
+const depth = 6;
 
 var botIsMoving = false;
 
-$(".game-tile").each(function(){
-    this.addEventListener("click",function(){
-        if(botIsMoving)return;
-        const cell = +this.id.slice(-1);
-        if(page.bot){
-            board.move(cell, board.player)
-            botIsMoving=true;
-            setTimeout(function(){
-                board.move(board.bestMove(0,depth),'o') 
-                botIsMoving = false;
-            },1000)
-        }else{
-            board.move(cell, board.player)
-        }
-    })
+$(".game-tile").on("click",function(){
+    if(botIsMoving)return;
+    const cell = +this.id.slice(-1);
+    if(page.bot){
+        board.move(cell, board.player)
+        botIsMoving=true;
+        setTimeout(function(){
+            board.move(board.bestMove(0,depth),'o') 
+            botIsMoving = false;
+        },1000)
+    }else{
+        board.move(cell, board.player)
+    }
+    page.load();
 })
 
 
@@ -31,7 +30,6 @@ $(".game-tile").each(function(){
 
 
 $("#reset-btn")[0].addEventListener("click",()=>{board.reset()});
-
 document.body.addEventListener("keyup", function(e) {
     if(/^(Space|r)$/.test(e.code)){
         board.reset();
