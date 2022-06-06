@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" type="text/css" href="css/vars.css">
+   <link rel="stylesheet" type="text/css" href="css/index.css">
+   <script src=https://code.jquery.com/jquery-3.6.0.min.js
+   integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+   crossorigin="anonymous"></script>
+   <script src="localstorage.js" defer></script>
+   <script src="board.js" defer></script>
+   <script src="page.js" defer></script>
+   <script src="script.js" defer></script>
+   <link rel="icon" href="./assets/favicon.png">
+   <title>TIC TAC TOE</title>
+</head>
+<body>
+   <main id = "game-container">
+      <button id = "reset-btn"></button>
+      <div id = "turn">
+         <div id = "turn-img" alt = "x" class="x-turn"></div>
+         <span id = "turn-text">TURN</span>
+      </div>
+      <button id = "bot-btn" class= "singleplayer">SINGLEPLAYER</button>
+      <div class=game-tile id=cell0></div>
+      <div class=game-tile id=cell1></div>
+      <div class=game-tile id=cell2></div>
+      <div class=game-tile id=cell3></div>
+      <div class=game-tile id=cell4></div>
+      <div class=game-tile id=cell5></div>
+      <div class=game-tile id=cell6></div>
+      <div class=game-tile id=cell7></div>
+      <div class=game-tile id=cell8></div>
+      <div id = "x-wincount" class = "wincount">
+         <span>X</span>
+         <span id="x-wincount-text" class = "wincount-text">0</span>
+      </div>
+      <div id = "tiecount" class = "wincount">
+         <span>TIES</span>
+         <span id="tiecount-text" class = "wincount-text">0</span>
+      </div>
+      <div id = "o-wincount" class = "wincount">
+         <span>O</span>
+         <span id="o-wincount-text" class = "wincount-text">0</span>
+      </div>
+   </main>
+   <div id = game-end>
+      <span id = "game-end-text">No one won</span>
+   </div>
+</body>
+</html>
