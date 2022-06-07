@@ -40,5 +40,6 @@ document.querySelector("#bot-btn").addEventListener("click",()=>{
     board.reset();
 })
 window.addEventListener('click', function(e){
-    if(board.winner().winner && this.document.querySelector('main').contains(e.target) && this.document.querySelector("#game-end").contains(e.target))board.reset;
+    if(board.winner().winner && this.document.querySelector('main').contains(e.target) && this.document.querySelector("#game-end").contains(e.target))return;
+    board.reset;
 });
