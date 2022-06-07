@@ -1,4 +1,4 @@
-# tictactoe
+# Tic Tac Toe
 
 
 ## Features
